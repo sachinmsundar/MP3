@@ -25,7 +25,41 @@ public class TablePartC{
 
    public static void main(String[] args) throws IOException {
 
-	//TODO      
+	   //TODO
+       Configuration config = HBaseConfiguration.create();
+       HTable table = new HTable(config, "powers");
+       String line = "";
+
+       try (BufferedReader br = new BufferedReader(new FileReader("input.csv"))) {
+
+           while ((line = br.readLine()) != null) {
+               String[] input = line.split(",");
+               Put p = new Put(Bytes.toBytes(input[0]));
+
+               p.add(Bytes.toBytes("personal"),
+                       Bytes.toBytes("hero"),Bytes.toBytes(input[1]));
+
+               p.add(Bytes.toBytes("personal"),
+                       Bytes.toBytes("power"),Bytes.toBytes(input[2]));
+
+               p.add(Bytes.toBytes("professional"),Bytes.toBytes("name"),
+                       Bytes.toBytes(input[3]));
+
+               p.add(Bytes.toBytes("professional"),Bytes.toBytes("xp"),
+                       Bytes.toBytes(input[4]));
+
+               p.add(Bytes.toBytes("custom"),Bytes.toBytes("color"),
+                       Bytes.toBytes(input[5]));
+
+               table.put(p);
+           }
+
+       }catch(IOException e){
+           e.printStackTrace();
+       }
+
+       table.close();
+
    }
 }
 

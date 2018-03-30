@@ -21,7 +21,24 @@ public class TablePartE{
 
    public static void main(String[] args) throws IOException {
 
-	//TODO      
+	//TODO
+      Configuration config = HBaseConfiguration.create();
+
+      HTable table = new HTable(config, "powers");
+      Scan scan = new Scan();
+
+      scan.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("hero"));
+      scan.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("power"));
+      scan.addColumn(Bytes.toBytes("professional"), Bytes.toBytes("name"));
+      scan.addColumn(Bytes.toBytes("professional"), Bytes.toBytes("xp"));
+      scan.addColumn(Bytes.toBytes("custom"), Bytes.toBytes("color"));
+
+      ResultScanner scanner = table.getScanner(scan);
+
+      for (Result result = scanner.next(); result != null; result = scanner.next())
+         System.out.println(result);
+
+      scanner.close();
 	
    }
 }
