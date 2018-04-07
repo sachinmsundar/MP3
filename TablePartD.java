@@ -41,8 +41,8 @@ public class TablePartD{
        byte [] color_1 = r1.getValue(Bytes.toBytes("custom"),Bytes.toBytes("color"));
 
        // values for row19
-       byte [] hero_2 = r1.getValue(Bytes.toBytes("personal"),Bytes.toBytes("hero"));
-       byte [] color_2 = r1.getValue(Bytes.toBytes("custom"),Bytes.toBytes("color"));
+       byte [] hero_2 = r2.getValue(Bytes.toBytes("personal"),Bytes.toBytes("hero"));
+       byte [] color_2 = r2.getValue(Bytes.toBytes("custom"),Bytes.toBytes("color"));
 
        System.out.println("hero: " + Bytes.toString(hero_1) + ", " + "power: " + Bytes.toString(power_1) + ", " +
                "name: " + Bytes.toString(name_1) + ", " + "xp: " + Bytes.toString(xp_1) + ", " + "color: " + Bytes.toString(color_1));
