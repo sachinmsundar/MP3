@@ -29,9 +29,11 @@ public class TablePartD{
 
        Get g1 = new Get(Bytes.toBytes("row1"));
        Get g2 = new Get(Bytes.toBytes("row19"));
+       Get g3 = new Get(Bytes.toBytes("row1"));
 
        Result r1 = table.get(g1);
        Result r2 = table.get(g2);
+       Result r3 = table.get(g3);
 
        // values for row1
        byte [] hero_1 = r1.getValue(Bytes.toBytes("personal"),Bytes.toBytes("hero"));
@@ -44,11 +46,16 @@ public class TablePartD{
        byte [] hero_2 = r2.getValue(Bytes.toBytes("personal"),Bytes.toBytes("hero"));
        byte [] color_2 = r2.getValue(Bytes.toBytes("custom"),Bytes.toBytes("color"));
 
+       // values for row1
+       byte [] hero_3 = r3.getValue(Bytes.toBytes("personal"),Bytes.toBytes("hero"));
+       byte [] name_3 = r3.getValue(Bytes.toBytes("professional"),Bytes.toBytes("name"));
+       byte [] color_3 = r3.getValue(Bytes.toBytes("custom"),Bytes.toBytes("color"));
+
        System.out.println("hero: " + Bytes.toString(hero_1) + ", " + "power: " + Bytes.toString(power_1) + ", " +
                "name: " + Bytes.toString(name_1) + ", " + "xp: " + Bytes.toString(xp_1) + ", " + "color: " + Bytes.toString(color_1));
        System.out.println("hero: " + Bytes.toString(hero_2) + ", " + "color: " + Bytes.toString(color_2));
-       System.out.println("hero: " + Bytes.toString(hero_1) + ", " + "name: " + Bytes.toString(name_1) + ", " +
-               "color: " + Bytes.toString(color_1));
+       System.out.println("hero: " + Bytes.toString(hero_3) + ", " + "name: " + Bytes.toString(name_3) + ", " +
+               "color: " + Bytes.toString(color_3));
    }
 }
 
